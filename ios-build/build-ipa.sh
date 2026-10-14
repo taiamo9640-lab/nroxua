@@ -10,9 +10,9 @@ TEAM="${DEVELOPMENT_TEAM:-}"
 BUNDLE_ID="${BUNDLE_ID:-com.DefaultCompany.DragonBoy002}"
 BUILD_NUMBER="${BUILD_NUMBER:-1}"
 OUT="$ROOT/ios-build/out"
-ARCHIVE="$OUT/NroChamPa.xcarchive"
+ARCHIVE="$OUT/NroXua.xcarchive"
 EXPORT_DIR="$OUT/ipa"
-APP_NAME="NroChamPa"
+APP_NAME="NroXua"
 
 if [[ "$(uname -s)" != "Darwin" ]]; then
   echo "LOI: script nay phai chay tren macOS co Xcode. Windows/Linux khong tao duoc .ipa." >&2
@@ -62,10 +62,9 @@ SETTINGS=(
   -scheme "$SCHEME"
   -configuration "$CONFIG"
   -destination "generic/platform=iOS"
-  # Unity project nay dang co PRODUCT_NAME_APP cu (NgcRngXa). Dat lai ca hai
-  # build setting de ten .app tao ra khop voi ten ma phan dong goi dang tim.
+  # Dat ten app qua PRODUCT_NAME_APP; khong override PRODUCT_NAME vi no se doi
+  # ten UnityFramework.framework va lam hong cac import <UnityFramework/...>.
   PRODUCT_NAME_APP="$APP_NAME"
-  PRODUCT_NAME="$APP_NAME"
   BUILD_NUMBER="$BUILD_NUMBER"
   CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
 )
